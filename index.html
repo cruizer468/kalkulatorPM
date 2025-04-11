@@ -55,14 +55,14 @@
   </style>
 </head>
 <body>
-  <h1>Kalkulator Disk Untuk Preventive Maintenance</h1>
+  <h1>Kalkulator Preventive Maintenance</h1>
   <table>
     <thead>
       <tr>
-        <th>Disk</th>
+        <th>Komponen</th>
         <th>Full</th>
         <th>Sisa</th>
-        <th>Used</th>
+        <th>Kepake</th>
         <th>Persen (%)</th>
       </tr>
     </thead>
@@ -70,22 +70,22 @@
       <tr>
         <td>C</td>
         <td><input type="number" step="0.1" value="0" class="full"></td>
-        <td><input type="number" step="0.1" value="0" class="kepake"></td>
-        <td class="sisa">-</td>
+        <td><input type="number" step="0.1" value="0" class="sisa"></td>
+        <td class="kepake">-</td>
         <td class="persen">-</td>
       </tr>
       <tr>
         <td>D</td>
         <td><input type="number" step="0.1" value="0" class="full"></td>
-        <td><input type="number" step="0.1" value="0" class="kepake"></td>
-        <td class="sisa">-</td>
+        <td><input type="number" step="0.1" value="0" class="sisa"></td>
+        <td class="kepake">-</td>
         <td class="persen">-</td>
       </tr>
       <tr>
         <td>E</td>
         <td><input type="number" step="0.1" value="0" class="full"></td>
-        <td><input type="number" step="0.1" value="0" class="kepake"></td>
-        <td class="sisa">-</td>
+        <td><input type="number" step="0.1" value="0" class="sisa"></td>
+        <td class="kepake">-</td>
         <td class="persen">-</td>
       </tr>
     </tbody>
@@ -98,21 +98,21 @@
 
       rows.forEach(row => {
         const fullInput = row.querySelector(".full");
-        const kepakeInput = row.querySelector(".sisa);
-        const sisaCell = row.querySelector(".kepake");
+        const sisaInput = row.querySelector(".sisa");
+        const kepakeCell = row.querySelector(".kepake");
         const persenCell = row.querySelector(".persen");
 
         const full = parseFloat(fullInput.value);
-        const kepake = parseFloat(kepakeInput.value);
+        const sisa = parseFloat(sisaInput.value);
 
-        if (!isNaN(full) && !isNaN(kepake)) {
-          const sisa = full - kepake;
+        if (!isNaN(full) && !isNaN(sisa)) {
+          const kepake = full - sisa;
           const persen = (kepake / full) * 100;
 
-          sisaCell.textContent = sisa.toFixed(1);
+          kepakeCell.textContent = kepake.toFixed(1);
           persenCell.textContent = persen.toFixed(2) + "%";
         } else {
-          sisaCell.textContent = "-";
+          kepakeCell.textContent = "-";
           persenCell.textContent = "-";
         }
       });
